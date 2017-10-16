@@ -11,19 +11,21 @@
 \usepackage{tikz}
 \usepackage{titlesec}
 \usepackage[most]{tcolorbox}
-\definecolor{block-gray}{gray}{0.92}
+\definecolor{block-gray}{gray}{0.82}
 \newtcolorbox{myquote}{colback=block-gray,grow to right by=-10mm,grow to left by=-10mm, boxrule=0pt,boxsep=0pt,breakable}
 
 \usepackage{graphicx}
 \usepackage{transparent}
 \usepackage{ifthen}
 
+\newif\iflogo
+
 \AddToShipoutPictureBG{
-  \ifthenelse{\thepage >2}{%
+  \iflogo{%
     \put(280,390){%
       \transparent{0.17}\includegraphics[width=3.5cm]{logo_SNS_nero}%
     }%
-  }{}%
+  }\else\fi%
 }
 
 \makeatletter
@@ -64,6 +66,7 @@
 }
 
 \begin{document}
+\logofalse
 \newgeometry{top=0mm,bottom=0mm,left=0mm,right=0mm}
 \fontsize{13}{16}\selectfont
 \setlength{\parindent}{0cm}
@@ -73,12 +76,16 @@
 
 %% -- PRIMA DI COPERTINA
 \leavevmode
-\put(55,50){
+\put(50,90){
   \includegraphics[width=0.70\textwidth]{miniatura}
 }
 \leavevmode
 \put(0,0){
-  \includegraphics[width=0.96\textwidth]{copertina_scritta}
+  \includegraphics[width=0.96\textwidth]{cornice}
+}
+\leavevmode
+\put(60,300){
+  \includegraphics[width=0.70\textwidth]{striscione}
 }
 \leavevmode
 \put(265,60){
@@ -103,7 +110,7 @@
   Impaginazione e Layout di Dario Balboni
 \end{minipage}
 \clearpage
-
+\logotrue
 %% -- INIZIO DEL CANZONIERE
 \title{Canzoniere di Guerra}
 
@@ -247,21 +254,29 @@ vanno a far finta di studiare...
 \begin{canzone}
 Quasi tutta la gente ha un’igiene decente.
 Ma al Sant'Anna no!
+
 Relazioni normali ci son tra gli animali.
 Ma al Sant'Anna no!
+
 Moderarsi ai processi lo san fare anche i fessi.
 Ma al Sant'Anna no!
+
 Quasi ovunque in natura si è trovata una cura.
 Ma al Sant'Anna no!
+
 Disegnare una theta lo fa un analfabeta.
 Ma al Sant'Anna no!
+
 Cosa son le equazioni lo san pure i coglioni.
 Ma al Sant'Anna no!
+
 Quattro conti azzeccati li fan pure i primati.
 Ma al Sant'Anna no!
+
 L’intuizione geniale sempre abbonda in
 Normale.
 Ma al Sant'Anna no!
+
 Urrà, urrà, urrà alla Normale…
 Ma al Sant'Anna no! (x4)
 \end{canzone}
@@ -314,20 +329,24 @@ Fame e macerie dentro al Terzani
 Come il piombo combatte la Normal,
 strade di San francesco, di acqua siete lastricate,
 combatte il nostro juggernaut su mille barricate.
+
 Sulla sua strada bagnata
 Sant'Anna umiliata lo sa,
 d’ora in poi troverà
 la Normale che la laverà.
+
 Generale da gonfiare gavettoni sin alle tre,
 l’officina sforna scudi senza sosta:
 ma dentro al Carducci l’aria brucia come se
 non il solo onor fosse la posta.
+
 Vinta la guerra noi a festeggiar,
 cento bicchieri per Fabio Martin.
 E il santannino torna a casa,
  si lecca le ferite;
 vola uno scudo, un prode canta,
 il Priore ci sorride.
+
 Sulla sua strada bagnata
 Sant'Anna lo sa,
 d’ora in poi troverà
@@ -372,10 +391,13 @@ Sant'Anna merda (ad libitum).
 \begin{canzone}
 Che confusione
 Sarà perché offendiamo
+
 Uno studente
 Che non sa l’italiano
+
 Balbuziente
 E non si capisce niente
+
 Il santannino
 È proprio un deficiente...
 \end{canzone}
@@ -425,8 +447,18 @@ Vivat, vivat, vivat Normale!
 Vivat, vivat, vivat Normale!
 \end{canzone}
 \clearpage
+\null\clearpage
+\null\clearpage
+\null
+\clearpage
+\logofalse
+\newgeometry{top=0mm,bottom=0mm,left=0mm,right=0mm}
 
-%% ULTIMA DI COPERTINA
+%% -- ULTIMA DI COPERTINA
+\leavevmode
+\put(0,0){
+  \includegraphics[width=0.96\textwidth]{cornice}
+}
 
 \end{document}
 
