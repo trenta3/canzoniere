@@ -18,6 +18,10 @@
 \usepackage{transparent}
 \usepackage{ifthen}
 \usepackage{fdsymbol}
+\usepackage[final,kerning=true,spacing=true,tracking=true,activate={true,nocompatibility},stretch=10,shrink=10]{microtype}
+
+\SetTracking{encoding={*}, shape=sc}{0}
+\SetExtraKerning[unit=space]{encoding=T1}{'={160,280},”={250,0},“={0,100}}
 
 % Per aggiungere il logo SNS in trasparenza ad alcune pagine
 \newif\iflogo
