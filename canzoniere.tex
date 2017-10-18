@@ -14,21 +14,33 @@
 \definecolor{block-gray}{gray}{0.82}
 \newtcolorbox{myquote}{colback=block-gray,grow to right by=-10mm,grow to left by=-10mm, boxrule=0pt,boxsep=0pt,breakable}
 
+\usepackage{titlesec}
 \usepackage{graphicx}
 \usepackage{transparent}
 \usepackage{ifthen}
+\usepackage{changepage}
 \usepackage{fdsymbol}
 \usepackage[final,kerning=true,spacing=true,tracking=true,activate={true,nocompatibility},stretch=10,shrink=10]{microtype}
 
 \SetTracking{encoding={*}, shape=sc}{0}
 \SetExtraKerning[unit=space]{encoding=T1}{'={160,280},”={250,0},“={0,100}}
 
+\newlength{\sectionnumlen}
+\setlength{\sectionnumlen}{30pt}
+
+\titleformat{\section}%
+{\fontfamily{ppl}\selectfont\fontsize{16}{24}\selectfont\scshape\bfseries}%
+{\makebox[\sectionnumlen][l]{\bfseries\scshape\thesection}}%
+{0mm}%
+{}%
+[\vskip -0.1cm plus 0.1cm minus 0.1cm]%
+
 % Per aggiungere il logo SNS in trasparenza ad alcune pagine
 \newif\iflogo
 \AddToShipoutPictureBG{
   \iflogo{%
     \put(280,390){%
-      \transparent{0.17}\includegraphics[width=3.5cm]{logo_SNS_nero}%
+      \transparent{0.17}\includegraphics[width=3.5cm]{images/logo_SNS_nero}%
     }%
   }\else\fi%
 }
@@ -62,17 +74,12 @@
 }
 \makeatother
 
-\setformat{section}{\LARGE}
+% \setformat{section}{\LARGE}
 
 \definecolor{ourgray}{HTML}{606060}
 \newcommand{\santanna}{{\normalsize s}ant'{\normalsize a}nna}
-\newcommand{\subtitle}[1]{\vspace*{-0.8em}{\hskip 1.0cm\textcolor{ourgray}{\fontsize{11.5}{16}\selectfont\it #1}}\vspace*{0em}}
-\let\oldsection\section
-\renewcommand{\section}[1]{%
-  \vskip 0.9cm plus 1.0cm minus 0.5cm%
-  \oldsection{\fontfamily{ppl}\selectfont\fontsize{16}{24}\selectfont\scshape{#1}}%
-  \vspace*{-0.6em}%
-}
+\newcommand{\subtitle}[1]{\vspace*{-0.7em}%
+  {\makebox[\sectionnumlen][l]{}\textcolor{ourgray}{\fontsize{11.5}{16}\selectfont\it #1}}}
 \renewcommand{\title}[1]{%
   \begin{center}%
     {\fontfamily{pag}\selectfont\scshape\Huge{#1}}%
@@ -85,11 +92,11 @@
 \newcommand{\aritskip}{\makebox[\aritlen][l]{}}
 
 \newenvironment{canzone}{%
-  \begin{addmargin}[1cm]{0cm}%
+  \begin{adjustwidth}{\sectionnumlen}{}%
   \begin{alltt}\normalfont%
   }{%
   \end{alltt}%
-  \end{addmargin}%
+  \end{adjustwidth}%
 }
 
 \begin{document}
@@ -100,59 +107,48 @@
 \setlength{\parskip}{1.0em plus 0.4em minus 0.2em}
 \linespread{1.25}
 \pagestyle{empty}
-
-%% -- PRIMA DI COPERTINA
-\leavevmode
-\put(50,70){
-  \includegraphics[width=0.70\textwidth]{miniatura}
-}
-\leavevmode
-\put(0,0){
-  \includegraphics[width=0.96\textwidth]{cornice}
-}
-\leavevmode
-\put(60,300){
-  \includegraphics[width=0.70\textwidth]{striscione}
-}
-% \leavevmode
-% \put(265,60){
-%   {\transparent{0.8}\includegraphics[width=0.16\textwidth]{fregio}}
-% }
-\clearpage
+\input{extra/prima-copertina}
 \newgeometry{top=20mm,left=15mm,right=15mm,bottom=20mm}
-%% -- CITAZIONE E RINGRAZIAMENTI
-\begin{myquote}\it
-  Chi vince la guerra scrive la storia,\\
-  chi perde la guerra scrive i giornali.
-  
-  {~\hfill\normalfont -- Gianni Cusumano}
-\end{myquote}
-
-\vfill
-
-\begin{minipage}{0.80\textwidth}\fontsize{10}{15}\selectfont
-  Cornice e Titolo di Marta Tasinato\\
-  Adeguamento Immagini di Piero Lafiosca ed Enrico Polesel\\
-  Correzione testi di Nicolò Campodonico\\
-  Impaginazione e Layout di Dario Balboni
-\end{minipage}
-\clearpage
+\input{extra/seconda-copertina}
 \logotrue
 %% -- INIZIO DEL CANZONIERE
-\input{canzoni}
+\title{Canzoniere di Guerra}
+\title{della}
+\title{Scuola Normale Superiore}
 
+\input{canzoni/Normale_Urra}
+\input{canzoni/Santanna_Merda}
+\input{canzoni/Scuola_Normale_Trionfera}
+\input{canzoni/Son_Perdenti_Son_Sfigati}
+\input{canzoni/Nella_Notte_Piu_Nera}
+\input{canzoni/Sono_Gli_Scemi_Del_Santanna}
+\input{canzoni/Lo_Han_Segato_Alla_Scuola_Normal}
+\input{canzoni/Normale_Ole}
+\input{canzoni/Il_Ponte_Sul_Fiume_Arno}
+\clearpage
+\logofalse
+\input{extra/intermezzo}
+\logotrue
+\input{canzoni/Il_Santannino_Puzza}
+\input{canzoni/Noi_Vogliamo_Tanto_Bene}
+\input{canzoni/Ma_Al_Santanna_No}
+\input{canzoni/Il_Sogno_Alla_Normale}
+\input{canzoni/Benvenuti}
+\input{canzoni/San_Francesco}
+\input{canzoni/Siam_Venuti_Fin_Qua}
+\input{canzoni/Sit_Triumphans_O_Schola_Normalis}
+\input{canzoni/Coro_Napoletano_Per_Maradona}
+\input{canzoni/Poveri_Pirla}
+\input{canzoni/Che_Confusione}
+\input{canzoni/Youporn}
+\input{canzoni/Ribadiamo_Un_Po_Il_Concetto}
+\input{canzoni/Priore_Ciao}
+\input{canzoni/Il_Santanna_E}
+\input{canzoni/Settimo_Comandamento}
+\input{canzoni/L_Importante_E_Partecipare}
 \clearpage
 \logofalse
 \newgeometry{top=0mm,bottom=0mm,left=0mm,right=0mm}
-
-%% -- ULTIMA DI COPERTINA
-\leavevmode
-\put(55,125){
-  {\transparent{0.8}\includegraphics[width=0.70\textwidth]{fregio}}
-}
-\leavevmode
-\put(0,0){
-  \includegraphics[width=0.96\textwidth]{cornice}
-}
+\input{extra/ultima-copertina}
 \end{document}
 
