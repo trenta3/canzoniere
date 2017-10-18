@@ -1,7 +1,8 @@
 \documentclass[a4paper]{article}
 \usepackage{pdfpages}
 
+% -- Fare un altro canzoniere con le pagine a bordi alternati
 \begin{document}
-\includepdf[pages={1-20},nup=1x2,landscape,booklet]{canzoniere}
+\includepdf[pages=-,nup=1x2,landscape,booklet,delta=0 10]{canzoniere}
 \end{document}
 
