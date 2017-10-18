@@ -1,16 +1,10 @@
+BOOKLETS := single-page double-page standard twoside
+
 .DEFAULT_TARGET: all
-.PHONY: all canzoniere booklet-single-page booklet-double-page booklet-standard
+.PHONY: all $(BOOKLETS:%=booklet-%)
 
-all: canzoniere booklet-single-page booklet-double-page booklet-standard
+all: $(BOOKLETS:%=booklet-%)
 
-canzoniere:
+$(BOOKLETS:%=booklet-%):
 	latexmk -pdf $@.tex
 
-booklet-single-page: canzoniere
-	pdflatex $@.tex
-
-booklet-double-page: canzoniere
-	pdflatex $@.tex
-
-booklet-standard: canzoniere
-	pdflatex $@.tex

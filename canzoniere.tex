@@ -1,4 +1,4 @@
-\documentclass[11pt,a5paper]{article}
+% \documentclass[11pt,a5paper]{article}
 \usepackage{xcolor}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -108,7 +108,11 @@
 \linespread{1.25}
 \pagestyle{empty}
 \input{extra/prima-copertina}
+\iftwoside
+\newgeometry{top=20mm,inner=20mm,outer=10mm,bottom=20mm}
+\else
 \newgeometry{top=20mm,left=15mm,right=15mm,bottom=20mm}
+\fi
 \input{extra/seconda-copertina}
 \logotrue
 %% -- INIZIO DEL CANZONIERE
