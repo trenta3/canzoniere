@@ -1,0 +1,157 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{alltt}
+\usepackage{scrextend}
+\usepackage{geometry}
+\usepackage[default]{cantarell}
+\usepackage{eso-pic}
+\usepackage{tikz}
+\usepackage{titlesec}
+\usepackage[most]{tcolorbox}
+\definecolor{ourgray}{HTML}{404040}
+\newtcolorbox{myquote}{colback=block-gray,grow to right by=-10mm,grow to left by=-10mm, boxrule=0pt,boxsep=0pt,breakable}
+
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{transparent}
+\usepackage{ifthen}
+\usepackage{changepage}
+\usepackage{fdsymbol}
+\usepackage{paracol}
+\usepackage{multicol}
+\usepackage[final,kerning=true,spacing=true,tracking=true,activate={true,nocompatibility},stretch=10,shrink=10]{microtype}
+
+\SetTracking{encoding={*}, shape=sc}{0}
+% \SetExtraKerning[unit=space]{encoding=T1}{'={160,280},”={250,0},“={0,100}}
+
+\newlength{\sectionnumlen}
+\setlength{\sectionnumlen}{0pt}
+\setlength{\columnsep}{3.8em}
+
+\titleformat{\section}%
+{\fontfamily{ppl}\selectfont\fontsize{13}{24}\selectfont\scshape\bfseries}%
+{}%
+{0mm}%
+{}%
+[\vskip -0.4em]%
+
+% Per aggiungere il logo SNS in trasparenza ad alcune pagine
+\newif\iflogo
+\AddToShipoutPictureBG{
+  \iflogo{%
+    \put(250,390){%
+      \transparent{0.17}\includegraphics[width=3.5cm]{images/logo_SNS_nero}%
+    }%
+  }\else\fi%
+}
+
+\newcommand{\RIT}{%
+  \vspace*{-0.3em}%
+  {~\hfill{\fontfamily{ppl}\selectfont $\vardiamondsuit${\hskip 0.5em}RIT.{\hskip 0.5em}$\vardiamondsuit$}\hfill~}%
+  \vspace*{-0.3em}%
+}
+
+\newcommand{\ARIT}{%
+  {\fontfamily{ppl}\selectfont RIT.}%
+}
+
+\newcommand{\RITB}{%
+  \vspace*{-0.3em}%
+  {~\hfill{\fontfamily{ppl}\selectfont $\vardiamondsuit${\hskip 0.5em}RIT. (x2){\hskip 0.5em}$\vardiamondsuit$}\hfill~}%
+  \vspace*{-0.3em}%
+}
+
+\newcommand{\santanna}{{\normalsize s}ant'{\normalsize a}nna}
+\newcommand{\subtitle}[1]{%
+  \vspace*{-0.2cm}%
+  {\makebox[\sectionnumlen][l]{}\textcolor{ourgray}{\fontsize{10}{16}\selectfont\it #1}}%
+  \vspace*{0.1cm}}
+\renewcommand{\title}[1]{%
+  \begin{center}%
+    {\fontfamily{pag}\selectfont\scshape\Huge{#1}}%
+  \end{center}%
+}
+
+\newlength{\aritlen}
+\settowidth{\aritlen}{\ARIT: }
+
+\newcommand{\aritskip}{\makebox[\aritlen][l]{}}
+
+\newenvironment{canzone}{%
+  \begin{adjustwidth}{\sectionnumlen}{}%
+  \begin{alltt}\normalfont%
+  }{%
+  \end{alltt}%
+  \end{adjustwidth}%
+}
+
+\begin{document}
+\fontsize{12}{14}\selectfont
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.1em plus 0.1em minus 0.09em}
+\linespread{1.1}
+\pagestyle{empty}
+\newgeometry{top=18mm,left=12mm,right=12mm,bottom=18mm}
+\logotrue
+%% -- INIZIO DEL CANZONIERE
+\title{Canzoniere di Guerra \\[0.7cm] Scuola Normale Superiore}
+
+\columnratio{0.6,0.3}[0.05]
+\begin{paracol}{2}
+  \input{canzoni/Normale_Urra}
+  \input{canzoni/Il_Ponte_Sul_Fiume_Arno}
+  \switchcolumn
+  \input{canzoni/Son_Perdenti_Son_Sfigati}
+  \input{canzoni/Normale_Ole}
+  \input{canzoni/Siam_Venuti_Fin_Qua}
+\end{paracol}
+\clearpage
+
+\begin{paracol}{2}
+  \input{canzoni/Scuola_Normale_Trionfera}
+  \input{canzoni/Youporn}
+  \input{canzoni/Ribadiamo_Un_Po_Il_Concetto}
+  \switchcolumn
+  \input{canzoni/Il_Santannino_Puzza}
+  \input{canzoni/Il_Sogno_Alla_Normale}
+  \input{canzoni/Santanna_Merda}
+  \input{canzoni/Settimo_Comandamento}
+\end{paracol}
+\clearpage
+
+\columnratio{0.55,0.3}[0.05]
+\begin{paracol}{2}
+  \input{canzoni/Nella_Notte_Piu_Nera}
+  \input{canzoni/Sono_Gli_Scemi_Del_Santanna}
+  \switchcolumn
+  \input{canzoni/Il_Santanna_E}
+  \input{canzoni/Che_Confusione}
+  \input{canzoni/Poveri_Pirla}
+  \input{canzoni/L_Importante_E_Partecipare}
+  \input{canzoni/Benvenuti}
+\end{paracol}
+\clearpage
+
+\columnratio{0.51,0.47}[0.05]
+\begin{paracol}{2}
+  \input{canzoni/Sit_Triumphans_O_Schola_Normalis}
+  \input{canzoni/Ma_Al_Santanna_No}
+  \switchcolumn
+  \input{canzoni/San_Francesco}
+  \input{canzoni/Coro_Napoletano_Per_Maradona}
+  \input{canzoni/Noi_Vogliamo_Tanto_Bene}
+\end{paracol}
+\clearpage
+
+\columnratio{0.51,0.4}[0.05]
+\begin{paracol}{2}
+  \input{canzoni/Lo_Han_Segato_Alla_Scuola_Normal}
+  \switchcolumn
+  \input{canzoni/Priore_Ciao}
+\end{paracol}
+\end{document}
+
