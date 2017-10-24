@@ -1,10 +1,20 @@
-BOOKLETS := single-page double-page standard twoside
-
 .DEFAULT_TARGET: all
-.PHONY: all $(BOOKLETS:%=booklet-%)
+.PHONY: all booklet-single-page booklet-double-page booklet-a4 booklet-standard booklet-twoside
 
-all: $(BOOKLETS:%=booklet-%)
+all: booklet-single-page booklet-double-page booklet-a4 booklet-standard booklet-twoside
 
-$(BOOKLETS:%=booklet-%):
+booklet-single-page: booklet-standard
+	latexmk -pdf $@.tex
+
+booklet-double-page: booklet-twoside
+	latexmk -pdf $@.tex
+
+booklet-a4:
+	latexmk -pdf $@.tex
+
+booklet-standard:
+	latexmk -pdf $@.tex
+
+booklet-twoside:
 	latexmk -pdf $@.tex
 
