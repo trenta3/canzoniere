@@ -11,7 +11,7 @@ Basterà dare il comando `make` per ottenere direttamente tutti i file compilati
 
 Se si conosce Docker, si potrà usare:
 ```bash
-docker-compose build && docker-compose up
+docker-compose build && USER=$(id -u) docker-compose up
 ```
 che provvederà a compilarli al posto nostro.
 
