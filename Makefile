@@ -2,6 +2,9 @@
 .PHONY: all booklet-single-page booklet-double-page booklet-a4 booklet-standard booklet-twoside
 
 all: booklet-single-page booklet-double-page booklet-a4 booklet-standard booklet-twoside
+	mkdir build
+	mv *.pdf build/
+	latexmk -c
 
 booklet-single-page: booklet-standard
 	latexmk -pdf $@.tex

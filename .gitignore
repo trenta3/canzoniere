@@ -8,3 +8,4 @@
 *.pdf
 *.orig
 *.ttf
+build/
