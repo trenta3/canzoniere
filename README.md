@@ -17,3 +17,4 @@ che provvederà a compilarli al posto nostro.
 
 ## Licenza
 I testi delle canzoni in questo lavoro sono soggetti alla licenza Creative Commons 4.0 BY-SA, che potete trovare nel file [LICENSE](./LICENSE).
+Sono esclusi dalla licenza le registrazioni delle canzoni della guerra ed i testi modificati, che mantengono i diritti dei loro creatori originari.
