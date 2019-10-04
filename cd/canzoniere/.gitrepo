@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/flavio-a/canzoniere.git
+	branch = master
+	commit = b3f5a8b05a51e3d29541db273b82ad17d479d7bd
+	parent = 5864ddda80a52c5724ff41bdf3c412a8e52d1950
+	method = merge
+	cmdver = 0.4.0

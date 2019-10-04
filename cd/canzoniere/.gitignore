@@ -1,0 +1,11 @@
+*~
+*#
+.#*
+*.aux
+*.fls
+*.fdb_latexmk
+*.log
+*.pdf
+*.orig
+*.ttf
+*.gz

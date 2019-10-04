@@ -1,0 +1,167 @@
+\documentclass[11pt,a5paper]{article}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[greek, italian]{babel}
+\usepackage{alltt}
+\usepackage{scrextend}
+\usepackage{geometry}
+\usepackage[default]{opensans}
+\usepackage{eso-pic}
+\usepackage{tikz}
+\usepackage{titlesec}
+\usepackage[most]{tcolorbox}
+\definecolor{block-gray}{gray}{0.82}
+\newtcolorbox{myquote}{colback=block-gray,grow to right by=-10mm,grow to left by=-10mm, boxrule=0pt,boxsep=0pt,breakable}
+
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{transparent}
+\usepackage{ifthen}
+\usepackage{changepage}
+\usepackage{fdsymbol}
+\usepackage[final,kerning=true,spacing=true,tracking=true,activate={true,nocompatibility},stretch=10,shrink=10]{microtype}
+
+\usepackage{tabularx}
+\usepackage{tabto}
+\usepackage{setspace}
+\usepackage{tocloft}
+
+\SetTracking{encoding={*}, shape=sc}{0}
+\SetExtraKerning[unit=space]{encoding=T1}{'={160,280},”={250,0},“={0,100}}
+
+\newlength{\sectionnumlen}
+\setlength{\sectionnumlen}{30pt}
+
+\titleformat{\section}%
+{\fontfamily{ppl}\selectfont\fontsize{16}{24}\selectfont\scshape\bfseries}%
+{\makebox[\sectionnumlen][l]{\bfseries\scshape\thesection}}%
+{0mm}%
+{}%
+[\vskip -0.1cm plus 0.1cm minus 0.1cm]%
+
+% Per aggiungere il logo SNS in trasparenza ad alcune pagine
+\newif\iflogo
+\AddToShipoutPictureBG{
+  \iflogo{%
+    \put(280,390){%
+      \transparent{0.17}\includegraphics[width=3.5cm]{images/logo_SNS_nero}%
+    }%
+  }\else\fi%
+}
+
+\newcommand{\RIT}{%
+  \vspace*{-0.3em}%
+  {~\hfill{\fontfamily{ppl}\selectfont $\vardiamondsuit${\hskip 0.5em}RIT.{\hskip 0.5em}$\vardiamondsuit$}\hfill~}%
+  \vspace*{-0.3em}%
+}
+
+\newcommand{\ARIT}{%
+  {\fontfamily{ppl}\selectfont RIT.}%
+}
+
+\newcommand{\RITB}{%
+  \vspace*{-0.3em}%
+  {~\hfill{\fontfamily{ppl}\selectfont $\vardiamondsuit${\hskip 0.5em}RIT. x2{\hskip 0.5em}$\vardiamondsuit$}\hfill~}%
+  \vspace*{-0.3em}%
+}
+
+\newcommand{\ALLREP}[1]{%
+	{\fontfamily{ppl}\selectfont {\hskip 0.5em}(Tutto x#1){\hskip 0.5em}}%
+}
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{%
+  \begingroup
+  \@nameuse{additional@cntformat#1}%
+  {\@nameuse{the#1}}%
+  \endgroup
+  \quad
+}
+\newcommand{\setformat}[2]{%
+  \@namedef{additional@cntformat#1}{#2}%
+}
+\makeatother
+
+% \setformat{section}{\LARGE}
+
+\definecolor{ourgray}{HTML}{606060}
+\newcommand{\santanna}{{\normalsize s}ant'{\normalsize a}nna}
+\newcommand{\subtitle}[1]{\vspace*{-0.7em}%
+  {\makebox[\sectionnumlen][l]{}\textcolor{ourgray}{\fontsize{11.5}{16}\selectfont\it #1}}}
+\renewcommand{\title}[1]{%
+  \begin{center}%
+    {\fontfamily{pag}\selectfont\scshape\Huge{#1}}%
+  \end{center}%
+}
+
+\newlength{\aritlen}
+\settowidth{\aritlen}{\ARIT: }
+
+\newcommand{\aritskip}{\makebox[\aritlen][l]{}}
+
+\newenvironment{canzone}{%
+  \begin{adjustwidth}{\sectionnumlen}{}%
+  \begin{alltt}\normalfont%
+  }{%
+  \end{alltt}%
+  \end{adjustwidth}%
+}
+
+\begin{document}
+\logofalse
+\newgeometry{top=0mm,bottom=0mm,left=0mm,right=0mm}
+\fontsize{13}{16}\selectfont
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1.0em plus 0.4em minus 0.2em}
+\linespread{1.25}
+\pagestyle{empty}
+\input{extra/prima-copertina}
+\if twoside
+\newgeometry{top=20mm,inner=20mm,outer=10mm,bottom=20mm}
+\else
+\newgeometry{top=20mm,left=15mm,right=15mm,bottom=20mm}
+\fi
+\input{extra/seconda-copertina}
+\logotrue
+%% -- INIZIO DEL CANZONIERE
+\title{Canzoniere di Guerra}
+\title{della}
+\title{Scuola Normale Superiore}
+\begin{center}%
+	{\fontfamily{pag}\selectfont\scshape\Large{(Versione CD)}}%
+\end{center}%
+
+\clearpage
+\input{canzoni/Normale_Urra}
+\input{canzoni/Scuola_Normale_La_Trionfera}
+\vspace{0.6in}
+\input{canzoni/Son_Perdenti_Son_Sfigati}
+\clearpage
+\input{canzoni/Nella_Notte_Piu_Nera}
+\vspace{0.6in}
+\input{canzoni/Sono_Gli_Scemi_Del_Santanna}
+\clearpage
+\input{canzoni/LHan_Segato_Alla_Normal}
+\clearpage
+\input{canzoni/Il_Ponte_Sul_Fiume_Arno}
+\vspace{1.2in}
+\input{canzoni/Il_Santannino_Puzza}
+\clearpage
+\input{canzoni/Ma_Al_Santanna_No}
+\clearpage
+\input{canzoni/Il_Sogno_Alla_Normale}
+\input{canzoni/Sis_Triumphans_O_Schola_Normalis}
+\input{canzoni/Priore_Ciao}
+\clearpage
+\input{canzoni/LArno_Mormorava}
+\clearpage
+\input{canzoni/Santannin}
+\vspace{1in}
+\input{canzoni/Il_vero_Normalista}
+\clearpage
+\logofalse
+\newgeometry{top=0mm,bottom=0mm,left=0mm,right=0mm}
+\input{extra/ultima-copertina}
+\end{document}
+
